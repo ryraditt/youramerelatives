@@ -1,0 +1,286 @@
+:root {
+  /* White & Orange Color Palette */
+  --bg-dark: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(234, 88, 12, 0.15);
+  --border-glow: rgba(234, 88, 12, 0.08);
+  
+  --primary-gold: #ea580c; /* Mining Orange */
+  --primary-gold-rgb: 234, 88, 12;
+  --primary-gold-hover: #c2410c; /* Darker Orange */
+  
+  --accent-copper: #c2410c;
+  --accent-copper-hover: #9a3412;
+  
+  --text-primary: #0f172a; /* Slate 900 */
+  --text-secondary: #334155; /* Slate 700 */
+  --text-muted: #64748b; /* Slate 500 */
+  
+  /* Fonts */
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Layout */
+  --max-width: 1200px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(234, 88, 12, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(194, 65, 12, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, #f8fafc 0%, #e2e8f0 100%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(234, 88, 12, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 88, 12, 0.4);
+}
+
+/* Base Utility Classes */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(234, 88, 12, 0.25);
+  box-shadow: 0 15px 40px -10px rgba(234, 88, 12, 0.08), 0 1px 3px rgba(234, 88, 12, 0.03);
+}
+
+/* Glowing text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(234, 88, 12, 0.15);
+}
+
+/* Premium Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff; /* White text for excellent contrast */
+  background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-copper) 100%);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.15);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.3);
+  background: linear-gradient(135deg, var(--primary-gold-hover) 0%, var(--accent-copper-hover) 100%);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: rgba(234, 88, 12, 0.4);
+  color: var(--text-primary);
+}
+
+.btn-secondary:active:not(:disabled) {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid rgba(234, 88, 12, 0.1);
+  border-top-color: var(--primary-gold);
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+/* Markdown typography rendering style */
+.markdown-content {
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-content h1 {
+  font-size: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(234, 88, 12, 0.1);
+  padding-bottom: 0.25rem;
+}
+
+.markdown-content h3 {
+  font-size: 1.2rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1.25rem;
+}
+
+.markdown-content ul, 
+.markdown-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid var(--primary-gold);
+  background: rgba(234, 88, 12, 0.05);
+  padding: 0.75rem 1.25rem;
+  margin: 1.25rem 0;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  font-style: italic;
+}
+
+.markdown-content a {
+  color: var(--primary-gold);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+  color: var(--primary-gold-hover);
+}
+
+.markdown-content code {
+  font-family: monospace;
+  background: rgba(15, 23, 42, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Micro-interactions */
+.scale-on-hover {
+  transition: transform 0.2s ease;
+}
+.scale-on-hover:hover {
+  transform: scale(1.02);
+}
