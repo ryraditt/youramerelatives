@@ -427,40 +427,41 @@
 
 /* Printing Media Query (for premium PDF export) */
 @media print {
-  body {
+  html, body {
     background: white !important;
     color: black !important;
-  }
-  
-  /* Hide all elements on the body by default */
-  body * {
-    visibility: hidden;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
   }
 
-  /* Make sure the result container and its children are visible */
-  .resultContainer, .resultContainer * {
-    visibility: visible;
-  }
-
-  /* Position the printable area at the absolute top-left of the page */
+  /* Reset layout structure to standard flow so page breaks are calculated correctly */
+  .wrapper, 
+  .mainContent, 
+  .cardContainer, 
+  .resultWrapper, 
   .resultContainer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+    display: block !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
     backdrop-filter: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    width: 100% !important;
     max-width: 100% !important;
   }
 
-  /* Specifically hide items marked with noPrint */
-  .noPrint, .noPrint * {
+  /* Hide interactive, warning, and loading components during print */
+  .noPrint,
+  .header,
+  .footer,
+  .toast {
     display: none !important;
-    visibility: hidden !important;
   }
 
   .resultBody {
@@ -471,6 +472,7 @@
   /* Ensure all child text colors default to black */
   .resultBody * {
     color: black !important;
+    background: transparent !important;
   }
 
   /* Style sources grid cleanly for print */
