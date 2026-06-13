@@ -469,10 +469,25 @@ export default function Home() {
           {/* STEP 1: Configuration & Search Form */}
           {status === 'idle' && (
             <div className="glass-panel animate-fade-in">
-              <div className={styles.formHeader}>
+              <div className={styles.formHeader} style={{ marginBottom: '1rem' }}>
                 <Sparkles size={20} className="text-glow" style={{ color: 'var(--primary-gold)' }} />
                 <h2 className={styles.formHeaderTitle}>Configure Report Parameters</h2>
               </div>
+              
+              {/* Ephemeral Warning Note */}
+              <div style={{
+                background: 'rgba(234, 88, 12, 0.04)',
+                borderLeft: '4px solid var(--primary-gold)',
+                padding: '0.85rem 1rem',
+                margin: '0 1.5rem 1rem 1.5rem',
+                borderRadius: '4px',
+                fontSize: '0.82rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.45'
+              }}>
+                <strong>⚠️ Privacy & Storage Note:</strong> This is a static news generator. No database is connected and no generated data is saved or stored on our servers. Once you close this browser tab, your report will be permanently lost. Please copy or download your reports immediately.
+              </div>
+
               <form onSubmit={handleSearch}>
                 <div className={styles.formBody}>
                   <div className={styles.formGrid}>
@@ -994,6 +1009,20 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Ephemeral Warning Disclaimer */}
+                <div style={{
+                  background: 'rgba(234, 88, 12, 0.04)',
+                  border: '1px solid rgba(234, 88, 12, 0.15)',
+                  padding: '0.75rem 1rem',
+                  margin: '0 1.5rem 1.25rem 1.5rem',
+                  borderRadius: 'var(--border-radius-sm)',
+                  fontSize: '0.82rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: '1.45'
+                }}>
+                  <strong>⚠️ Ephemeral Generation Note:</strong> This report was generated statically without a database backup. Closing or reloading this window will permanently delete this report. Please copy it to your clipboard or download the report locally.
+                </div>
+
                 {/* Result text */}
                 <div className={styles.resultBody}>
                   <MarkdownRenderer markdown={synthesizedArticle} />
@@ -1105,6 +1134,9 @@ export default function Home() {
         </p>
         <p style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
           Powered by Advanced AI • RSS feeds parsed securely • Articles paraphrased dynamically
+        </p>
+        <p style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'rgba(234, 88, 12, 0.8)', fontWeight: 500 }}>
+          Disclaimer: This is a static news generation utility with no database storage. Ensure you copy generated reports locally before closing this page.
         </p>
       </footer>
     </div>
