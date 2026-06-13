@@ -432,35 +432,51 @@
     color: black !important;
   }
   
-  .wrapper {
-    min-height: auto !important;
+  /* Hide all elements on the body by default */
+  body * {
+    visibility: hidden;
   }
-  
-  .header, .backBtn, .resultHeader, .resultFooter, .footer, .cardContainer :not(.resultContainer), .resultContainer :not(.resultBody) {
-    display: none !important;
+
+  /* Make sure the result container and its children are visible */
+  .resultContainer, .resultContainer * {
+    visibility: visible;
   }
-  
+
+  /* Position the printable area at the absolute top-left of the page */
   .resultContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
     backdrop-filter: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    width: 100% !important;
     max-width: 100% !important;
   }
-  
+
+  /* Specifically hide items marked with noPrint */
+  .noPrint, .noPrint * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
   .resultBody {
     padding: 0 !important;
     color: black !important;
   }
-  
-  .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+
+  /* Ensure all child text colors default to black */
+  .resultBody * {
     color: black !important;
   }
-  
-  .markdown-content {
-    color: black !important;
+
+  /* Style sources grid cleanly for print */
+  .sourceCard {
+    background: transparent !important;
+    border: 1px solid #e2e8f0 !important;
+    page-break-inside: avoid;
   }
 }

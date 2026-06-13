@@ -958,7 +958,7 @@ export default function Home() {
           {/* STEP 5: Success Output Viewer */}
           {status === 'success' && (
             <div className={styles.resultWrapper}>
-              <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div className={styles.noPrint} style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
                 <button 
                   onClick={() => setStatus('selection')}
                   className="btn-secondary"
@@ -976,7 +976,7 @@ export default function Home() {
 
               <div className={`glass-panel ${styles.resultContainer} animate-fade-in`}>
                 {/* Result header bar */}
-                <div className={styles.resultHeader}>
+                <div className={`${styles.resultHeader} ${styles.noPrint}`}>
                   <div className={styles.resultHeaderLeft}>
                     <BookOpen size={20} style={{ color: 'var(--primary-gold)' }} />
                     <h2 className={styles.formHeaderTitle}>Synthesized News Report</h2>
@@ -1010,7 +1010,7 @@ export default function Home() {
                 </div>
 
                 {/* Ephemeral Warning Disclaimer */}
-                <div style={{
+                <div className={styles.noPrint} style={{
                   background: 'rgba(234, 88, 12, 0.04)',
                   border: '1px solid rgba(234, 88, 12, 0.15)',
                   padding: '0.75rem 1rem',
